@@ -104,6 +104,7 @@ android {
         experimental = true
     }
     kapt {
+        useBuildCache true
         generateStubs = true
     }
 }
