@@ -1,15 +1,15 @@
 version: 2.1
 
-executors:
-  my-executor:
-    docker:
-      - image: circleci/android:api-28-node
-    working_directory: ~/code
-    environment:
-      JVM_OPTS: -Xmx2048m
-      GRADLE_OPTS: -Xmx1536m -XX:+HeapDumpOnOutOfMemoryError -Dorg.gradle.caching=true -Dorg.gradle.configureondemand=true -Dkotlin.compiler.execution.strategy=in-process -Dkotlin.incremental=false
+orbs:
+  android: circleci/android@0.2.0
+  environment:J
+    JVM_OPTS: -Xmx2048m
+    GRADLE_OPTS: -Xmx1536m -XX:+HeapDumpOnOutOfMemoryError -Dorg.gradle.caching=true -Dorg.gradle.configureondemand=true -Dkotlin.compiler.execution.strategy=in-process -Dkotlin.incremental=false
+
 jobs:
   build:
+    executor: android/android
+
     steps:
       - checkout
       - run:
