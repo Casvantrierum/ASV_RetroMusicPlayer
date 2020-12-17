@@ -87,8 +87,6 @@ android {
         exclude 'META-INF/java.properties'
     }
     lintOptions {
-        disable 'MissingTranslation'
-        disable 'InvalidPackage'
         abortOnError false
     }
     compileOptions {
