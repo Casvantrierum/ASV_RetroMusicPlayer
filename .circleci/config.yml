@@ -15,11 +15,15 @@ jobs:
           name: chmod permissions
           command: chmod +x ./gradlew
       - run:
-          name: gradlew build
+          name: gradlew assemble
           command: ./gradlew clean assemble
+
+  test:
       - run:
           name: gradlew test
           command: ./gradlew test
+      - store_test_results:
+          path: ~/build/reports/tests/
       - run:
            name: gradlew lint
            command: ./gradlew lint
