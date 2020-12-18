@@ -20,6 +20,6 @@ jobs:
       - run:
           name: gradlew test
           command: ./gradlew test
-       - run:
+      - run:
            name: gradlew lint
            command: ./gradlew lint
