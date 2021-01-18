@@ -21,6 +21,8 @@ jobs:
           name: gradlew jacocoTestReport
           command: ./gradlew jacocoTestReport
       - store_test_results:
+          path: ~/app/build/jacoco
+      - store_test_results:
           path: ~/app/build/reports/tests/testDebugUnitTest
       - run:
            name: gradlew lint
