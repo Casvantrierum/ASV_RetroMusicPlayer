@@ -18,10 +18,10 @@ jobs:
           name: gradlew assemble
           command: ./gradlew clean assemble
       - run:
-          name: gradlew test
-          command: ./gradlew test
+          name: gradlew jacocoTestReport
+          command: ./gradlew jacocoTestReport
       - store_test_results:
-          path: ~/build/reports/tests/
+          path: ~/app/build/reports/tests/testDebugUnitTest
       - run:
            name: gradlew lint
            command: ./gradlew lint
