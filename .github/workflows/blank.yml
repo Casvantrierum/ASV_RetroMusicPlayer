@@ -40,4 +40,21 @@ jobs:
           # The gradle command you wish to run (required)
           # Here, `./gradlew test` will be run
           script: build
-
+      - name: Send mail
+        if: always()
+        uses: dawidd6/action-send-mail@v2
+        with:
+          # mail server settings
+          server_address: smtp.mailtrap.io
+          server_port: 2525
+          # user credentials
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          # email subject
+          subject: ${{ github.job }} job of ${{ github.repository }} has ${{ job.status }}
+          # email body as text
+          body: ${{ github.job }} job in worflow ${{ github.workflow }} of ${{ github.repository }} has ${{ job.status }}
+          # comma-separated string, send email to
+          to: casvantrierum@gmail.com
+          # from email name
+          from: Github Actions
