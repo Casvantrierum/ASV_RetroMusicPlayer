@@ -294,10 +294,14 @@ object MusicUtil : KoinComponent {
     }
 
     fun isArtistNameUnknown(artistName: String?): Boolean {
+        println("in musicUtil isArtistNameUnknown()")
+        println("Artist name : $artistName.")
         if (TextUtils.isEmpty(artistName)) {
+            println("apeears to be empty")
             return false
         }
         if (artistName == Artist.UNKNOWN_ARTIST_DISPLAY_NAME) {
+            println("unknown?")
             return true
         }
         val tempName = artistName!!.trim { it <= ' ' }.toLowerCase()

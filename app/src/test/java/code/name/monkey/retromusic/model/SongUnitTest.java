@@ -10,19 +10,43 @@ import static org.junit.Assert.*;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 public class SongUnitTest {
-    Song testSong = new Song(1, "TestSong", 1, 2020, 125, "data", 123456789, 1, "testAlbum", 1, "testArtist", null, null);
+    Song testSong = Song.getEmptySong();
 
     @Test
     public void songHashCode() throws Exception {
-        int hashCode = testSong.hashCode();
-        System.out.println("hashcode: " + hashCode);
-        assertEquals(4, 2 + 2);
+
+
+        int result = Long.hashCode( (int) testSong.getId());
+        result = 31 * result + testSong.getTitle().hashCode();
+        result = 31 * result + testSong.getTrackNumber();
+        result = 31 * result + testSong.getYear();
+        result = 31 * result + Long.hashCode( (int) testSong.getDuration());
+        result = 31 * result + testSong.getData().hashCode();
+        result = 31 * result + Long.hashCode( (int) testSong.getDateModified());
+        result = 31 * result + Long.hashCode( (int) testSong.getAlbumId());
+        result = 31 * result + testSong.getAlbumName().hashCode();
+        result = 31 * result + Long.hashCode( (int) testSong.getArtistId());
+        result = 31 * result + testSong.getArtistName().hashCode();
+
+        result = 31 * result;
+        if(testSong.getComposer() != null){
+            result += testSong.getComposer().hashCode();
+        }
+
+        result = 31 * result;
+        if(testSong.getAlbumArtist() != null){
+            result += testSong.getAlbumArtist().hashCode();
+        }
+
+        assertEquals(result, testSong.hashCode());
     }
 
     @Test
-    public void equals() throws Exception {
-        Song testSong2 = new Song(1, "TestSong", 1, 2020, 125, "data", 123456789, 1, "testAlbum", 1, "testArtist", null, null);
-        System.out.println("?" + testSong.equals(testSong2));
-        assertEquals(true, testSong.equals(testSong2));
+    public void songEquals(){
+        Song testSongEqual = testSong;
+        assertTrue(testSong.equals(testSongEqual));
+        
+        Song testSongNotEqual = new Song(1, "TestSong", 1, 2020, 125, "data", 1234567891, 1, "testAlbum", 1, "testArtist", null, null);
+        assertFalse(testSong.equals(testSongNotEqual));
     }
 }

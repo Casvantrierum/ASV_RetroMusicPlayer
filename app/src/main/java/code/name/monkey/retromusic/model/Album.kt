@@ -47,5 +47,4 @@ data class Album(
     companion object {
         val empty = Album(-1, emptyList())
     }
-
 }

@@ -14,26 +14,24 @@
 package code.name.monkey.retromusic.model
 
 import android.os.Parcelable
-import code.name.monkey.retromusic.db.HistoryEntity
-import code.name.monkey.retromusic.db.SongEntity
 import kotlinx.android.parcel.Parcelize
 
 // update equals and hashcode if fields changes
 @Parcelize
 open class Song(
-    open val id: Long,
-    open val title: String,
-    open val trackNumber: Int,
-    open val year: Int,
-    open val duration: Long,
-    open val data: String,
-    open val dateModified: Long,
-    open val albumId: Long,
-    open val albumName: String,
-    open val artistId: Long,
-    open val artistName: String,
-    open val composer: String?,
-    open val albumArtist: String?
+        open val id: Long,
+        open val title: String,
+        open val trackNumber: Int,
+        open val year: Int,
+        open val duration: Long,
+        open val data: String,
+        open val dateModified: Long,
+        open val albumId: Long,
+        open val albumName: String,
+        open val artistId: Long,
+        open val artistName: String,
+        open val composer: String?,
+        open val albumArtist: String?
 ) : Parcelable {
 
 
@@ -78,24 +76,22 @@ open class Song(
         return result
     }
 
-
     companion object {
-
         @JvmStatic
         val emptySong = Song(
-            id = -1,
-            title = "",
-            trackNumber = -1,
-            year = -1,
-            duration = -1,
-            data = "",
-            dateModified = -1,
-            albumId = -1,
-            albumName = "",
-            artistId = -1,
-            artistName = "",
-            composer = "",
-            albumArtist = ""
+                id = -1,
+                title = "",
+                trackNumber = -1,
+                year = -1,
+                duration = -1,
+                data = "",
+                dateModified = -1,
+                albumId = -1,
+                albumName = "",
+                artistId = -1,
+                artistName = "",
+                composer = "",
+                albumArtist = ""
         )
     }
 }

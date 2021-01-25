@@ -25,7 +25,10 @@ data class Artist(
 
     val name: String
         get() {
+            println("in getName")
             val name = safeGetFirstAlbum().safeGetFirstSong().albumArtist
+            println("name: $name")
+            println("is unknown" + MusicUtil.isArtistNameUnknown(name))
             if (PreferenceUtil.albumArtistsOnly && MusicUtil.isVariousArtists(name)) {
                 return VARIOUS_ARTISTS_DISPLAY_NAME
             }
@@ -57,6 +60,8 @@ data class Artist(
         const val UNKNOWN_ARTIST_DISPLAY_NAME = "Unknown Artist"
         const val VARIOUS_ARTISTS_DISPLAY_NAME = "Various Artists"
         const val VARIOUS_ARTISTS_ID : Long = -2
+
+        @JvmStatic
         val empty = Artist(-1, emptyList())
 
     }
