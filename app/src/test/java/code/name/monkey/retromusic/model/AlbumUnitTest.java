@@ -43,7 +43,6 @@ public class AlbumUnitTest {
         testAlbum2 = new Album(2, songsAlbum2);
 
         testAlbumEmpty =  Album.getEmpty();
-
     }
 
     @Test

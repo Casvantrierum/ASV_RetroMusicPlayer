@@ -81,7 +81,7 @@ public class ArtistUnitTest {
         allSongs.add(testSong3);
         allSongs.add(testSong4);
         assertEquals(allSongs, testArtist.getSongs());
-
+        assertArrayEquals(allSongs.toArray(), testArtist.getSongs().toArray());
     }
 
     @Test
