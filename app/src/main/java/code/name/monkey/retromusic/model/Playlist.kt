@@ -15,6 +15,7 @@ open class Playlist(
 ) : Parcelable, KoinComponent {
 
     companion object {
+        @JvmStatic
         val empty = Playlist(-1, "")
     }
 

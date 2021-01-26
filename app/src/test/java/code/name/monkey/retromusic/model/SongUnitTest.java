@@ -10,43 +10,50 @@ import static org.junit.Assert.*;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 public class SongUnitTest {
-    Song testSong = Song.getEmptySong();
+    Song testSongEmpty = Song.getEmptySong();
+    Song testSong = new Song(1, "TestSong", 1, 2020, 125, "data", 1234567891, 1, "testAlbum", 1, "testArtist", null, null);
+
 
     @Test
-    public void songHashCode() throws Exception {
-
-
-        int result = Long.hashCode( (int) testSong.getId());
-        result = 31 * result + testSong.getTitle().hashCode();
-        result = 31 * result + testSong.getTrackNumber();
-        result = 31 * result + testSong.getYear();
-        result = 31 * result + Long.hashCode( (int) testSong.getDuration());
-        result = 31 * result + testSong.getData().hashCode();
-        result = 31 * result + Long.hashCode( (int) testSong.getDateModified());
-        result = 31 * result + Long.hashCode( (int) testSong.getAlbumId());
-        result = 31 * result + testSong.getAlbumName().hashCode();
-        result = 31 * result + Long.hashCode( (int) testSong.getArtistId());
-        result = 31 * result + testSong.getArtistName().hashCode();
+    public void hash_code(){
+        int result = Long.hashCode( (int) testSongEmpty.getId());
+        result = 31 * result + testSongEmpty.getTitle().hashCode();
+        result = 31 * result + testSongEmpty.getTrackNumber();
+        result = 31 * result + testSongEmpty.getYear();
+        result = 31 * result + Long.hashCode( (int) testSongEmpty.getDuration());
+        result = 31 * result + testSongEmpty.getData().hashCode();
+        result = 31 * result + Long.hashCode( (int) testSongEmpty.getDateModified());
+        result = 31 * result + Long.hashCode( (int) testSongEmpty.getAlbumId());
+        result = 31 * result + testSongEmpty.getAlbumName().hashCode();
+        result = 31 * result + Long.hashCode( (int) testSongEmpty.getArtistId());
+        result = 31 * result + testSongEmpty.getArtistName().hashCode();
 
         result = 31 * result;
-        if(testSong.getComposer() != null){
-            result += testSong.getComposer().hashCode();
+        if(testSongEmpty.getComposer() != null){
+            result += testSongEmpty.getComposer().hashCode();
         }
 
         result = 31 * result;
-        if(testSong.getAlbumArtist() != null){
-            result += testSong.getAlbumArtist().hashCode();
+        if(testSongEmpty.getAlbumArtist() != null){
+            result += testSongEmpty.getAlbumArtist().hashCode();
         }
 
-        assertEquals(result, testSong.hashCode());
+        assertEquals(result, testSongEmpty.hashCode());
     }
 
     @Test
-    public void songEquals(){
-        Song testSongEqual = testSong;
-        assertTrue(testSong.equals(testSongEqual));
-        
-        Song testSongNotEqual = new Song(1, "TestSong", 1, 2020, 125, "data", 1234567891, 1, "testAlbum", 1, "testArtist", null, null);
-        assertFalse(testSong.equals(testSongNotEqual));
+    public void equals(){
+        Song testSongEqual = testSongEmpty;
+        assertTrue(testSongEmpty.equals(testSongEqual));
+
+        assertFalse(testSongEmpty.equals(testSong));
+    }
+
+    @Test
+    public void companion_object(){
+        Song emptySong =  new Song(
+                -1, "", -1, -1, -1, "", -1,-1,"",-1,"", "", ""
+        );
+        assertEquals(emptySong, Song.getEmptySong());
     }
 }

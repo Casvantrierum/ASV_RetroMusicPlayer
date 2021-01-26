@@ -45,6 +45,7 @@ data class Album(
     }
 
     companion object {
+        @JvmStatic
         val empty = Album(-1, emptyList())
     }
 }
