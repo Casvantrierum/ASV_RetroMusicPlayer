@@ -46,7 +46,6 @@ import kotlinx.android.synthetic.main.fragment_flat_player_playback_controls.*
 class FlatPlaybackControlsFragment :
     AbsPlayerControlsFragment(R.layout.fragment_flat_player_playback_controls), Callback {
 
-    private var lastPlaybackControlsColor: Int = 0
     private var lastDisabledPlaybackControlsColor: Int = 0
     private lateinit var progressViewUpdateHelper: MusicProgressViewUpdateHelper
 
@@ -148,25 +147,6 @@ class FlatPlaybackControlsFragment :
         updatePlayPauseDrawableState()
     }
 
-    private fun setUpPlayPauseFab() {
-        playPauseButton.setOnClickListener(PlayPauseButtonOnClickHandler())
-    }
-
-    private fun updatePlayPauseDrawableState() {
-        if (MusicPlayerRemote.isPlaying) {
-            playPauseButton.setImageResource(R.drawable.ic_pause)
-        } else {
-            playPauseButton.setImageResource(R.drawable.ic_play_arrow_white_32dp)
-        }
-    }
-
-    private fun setUpMusicControllers() {
-        setUpPlayPauseFab()
-        setUpRepeatButton()
-        setUpShuffleButton()
-        setUpProgressSlider()
-    }
-
     private fun updateSong() {
         val song = MusicPlayerRemote.currentSong
         title.text = song.title
@@ -187,7 +167,7 @@ class FlatPlaybackControlsFragment :
         updateShuffleState()
     }
 
-    private fun setUpRepeatButton() {
+    override fun setUpRepeatButton() {
         repeatButton.setOnClickListener { MusicPlayerRemote.cycleRepeatMode() }
     }
 
@@ -211,7 +191,7 @@ class FlatPlaybackControlsFragment :
         }
     }
 
-    private fun setUpShuffleButton() {
+    override fun setUpShuffleButton() {
         shuffleButton.setOnClickListener { MusicPlayerRemote.toggleShuffleMode() }
     }
 

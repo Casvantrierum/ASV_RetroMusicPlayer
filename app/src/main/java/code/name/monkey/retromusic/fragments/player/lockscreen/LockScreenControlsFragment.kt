@@ -47,7 +47,6 @@ class LockScreenControlsFragment :
     AbsPlayerControlsFragment(R.layout.fragment_lock_screen_playback_controls) {
 
     private var progressViewUpdateHelper: MusicProgressViewUpdateHelper? = null
-    private var lastPlaybackControlsColor: Int = 0
     private var lastDisabledPlaybackControlsColor: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -140,39 +139,12 @@ class LockScreenControlsFragment :
         TintHelper.setTintAuto(playPauseButton, colorFinal, true)
     }
 
-    private fun setUpPlayPauseFab() {
-        playPauseButton.setOnClickListener(PlayPauseButtonOnClickHandler())
+    override fun setUpRepeatButton() {
+        //do nothing
     }
 
-    private fun updatePlayPauseDrawableState() {
-        if (MusicPlayerRemote.isPlaying) {
-            playPauseButton.setImageResource(R.drawable.ic_pause)
-        } else {
-            playPauseButton.setImageResource(R.drawable.ic_play_arrow_white_32dp)
-        }
-    }
-
-    private fun setUpMusicControllers() {
-        setUpPlayPauseFab()
-        setUpPrevNext()
-        setUpProgressSlider()
-        setUpShuffleButton()
-        setUpRepeatButton()
-    }
-
-    private fun setUpPrevNext() {
-        updatePrevNextColor()
-        nextButton.setOnClickListener { MusicPlayerRemote.playNextSong() }
-        previousButton.setOnClickListener { MusicPlayerRemote.back() }
-    }
-
-    private fun updatePrevNextColor() {
-        nextButton.setColorFilter(lastPlaybackControlsColor, PorterDuff.Mode.SRC_IN)
-        previousButton.setColorFilter(lastPlaybackControlsColor, PorterDuff.Mode.SRC_IN)
-    }
-
-    private fun setUpShuffleButton() {
-        shuffleButton.setOnClickListener { MusicPlayerRemote.toggleShuffleMode() }
+    override fun setUpShuffleButton() {
+        //do nothing
     }
 
     override fun updateShuffleState() {
@@ -186,10 +158,6 @@ class LockScreenControlsFragment :
                 PorterDuff.Mode.SRC_IN
             )
         }
-    }
-
-    private fun setUpRepeatButton() {
-        repeatButton.setOnClickListener { MusicPlayerRemote.cycleRepeatMode() }
     }
 
     override fun updateRepeatState() {

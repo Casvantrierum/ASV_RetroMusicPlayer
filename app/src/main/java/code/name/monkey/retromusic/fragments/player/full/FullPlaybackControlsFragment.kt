@@ -53,7 +53,6 @@ class FullPlaybackControlsFragment :
     AbsPlayerControlsFragment(R.layout.fragment_full_player_controls),
     PopupMenu.OnMenuItemClickListener {
 
-    private var lastPlaybackControlsColor: Int = 0
     private var lastDisabledPlaybackControlsColor: Int = 0
     private lateinit var progressViewUpdateHelper: MusicProgressViewUpdateHelper
 
@@ -149,35 +148,6 @@ class FullPlaybackControlsFragment :
         updatePlayPauseDrawableState()
     }
 
-    private fun updatePlayPauseDrawableState() {
-        if (MusicPlayerRemote.isPlaying) {
-            playPauseButton.setImageResource(R.drawable.ic_pause)
-        } else {
-            playPauseButton.setImageResource(R.drawable.ic_play_arrow_white_32dp)
-        }
-    }
-
-    private fun setUpPlayPauseFab() {
-
-        playPauseButton.setOnClickListener(PlayPauseButtonOnClickHandler())
-        playPauseButton.post {
-            if (playPauseButton != null) {
-                playPauseButton.pivotX = (playPauseButton.width / 2).toFloat()
-                playPauseButton.pivotY = (playPauseButton.height / 2).toFloat()
-            }
-        }
-    }
-
-    private fun setUpMusicControllers() {
-        setUpPlayPauseFab()
-        setUpPrevNext()
-        setUpRepeatButton()
-        setUpShuffleButton()
-        setUpProgressSlider()
-        setupFavourite()
-        setupMenu()
-    }
-
     private fun setupMenu() {
         playerMenu.setOnClickListener {
             val popupMenu = PopupMenu(requireContext(), it)
@@ -189,17 +159,6 @@ class FullPlaybackControlsFragment :
 
     override fun onMenuItemClick(item: MenuItem?): Boolean {
         return (parentFragment as FullPlayerFragment).onMenuItemClick(item!!)
-    }
-
-    private fun setUpPrevNext() {
-        updatePrevNextColor()
-        nextButton.setOnClickListener { MusicPlayerRemote.playNextSong() }
-        previousButton.setOnClickListener { MusicPlayerRemote.back() }
-    }
-
-    private fun updatePrevNextColor() {
-        nextButton.setColorFilter(lastPlaybackControlsColor, PorterDuff.Mode.SRC_IN)
-        previousButton.setColorFilter(lastPlaybackControlsColor, PorterDuff.Mode.SRC_IN)
     }
 
     override fun setUpProgressSlider() {
@@ -236,7 +195,7 @@ class FullPlaybackControlsFragment :
         updateShuffleState()
     }
 
-    private fun setUpShuffleButton() {
+    override fun setUpShuffleButton() {
         shuffleButton.setOnClickListener { MusicPlayerRemote.toggleShuffleMode() }
     }
 
@@ -253,7 +212,7 @@ class FullPlaybackControlsFragment :
         }
     }
 
-    private fun setUpRepeatButton() {
+    override fun setUpRepeatButton() {
         repeatButton.setOnClickListener { MusicPlayerRemote.cycleRepeatMode() }
     }
 

@@ -43,7 +43,6 @@ import kotlinx.android.synthetic.main.fragment_simple_controls_fragment.*
 class SimplePlaybackControlsFragment :
     AbsPlayerControlsFragment(R.layout.fragment_simple_controls_fragment) {
 
-    private var lastPlaybackControlsColor: Int = 0
     private var lastDisabledPlaybackControlsColor: Int = 0
     private lateinit var progressViewUpdateHelper: MusicProgressViewUpdateHelper
 
@@ -95,26 +94,8 @@ class SimplePlaybackControlsFragment :
         }
     }
 
-    private fun setUpMusicControllers() {
-        setUpPlayPauseFab()
-        setUpPrevNext()
-        setUpRepeatButton()
-        setUpShuffleButton()
-        setUpProgressSlider()
-    }
 
-    private fun setUpPrevNext() {
-        updatePrevNextColor()
-        nextButton.setOnClickListener { MusicPlayerRemote.playNextSong() }
-        previousButton.setOnClickListener { MusicPlayerRemote.back() }
-    }
-
-    private fun updatePrevNextColor() {
-        nextButton.setColorFilter(lastPlaybackControlsColor, PorterDuff.Mode.SRC_IN)
-        previousButton.setColorFilter(lastPlaybackControlsColor, PorterDuff.Mode.SRC_IN)
-    }
-
-    private fun setUpShuffleButton() {
+    override fun setUpShuffleButton() {
         shuffleButton.setOnClickListener { MusicPlayerRemote.toggleShuffleMode() }
     }
 
@@ -131,7 +112,7 @@ class SimplePlaybackControlsFragment :
         }
     }
 
-    private fun setUpRepeatButton() {
+    override fun setUpRepeatButton() {
         repeatButton.setOnClickListener { MusicPlayerRemote.cycleRepeatMode() }
     }
 
@@ -239,17 +220,5 @@ class SimplePlaybackControlsFragment :
         updateRepeatState()
         updateShuffleState()
         updatePrevNextColor()
-    }
-
-    private fun setUpPlayPauseFab() {
-        playPauseButton.setOnClickListener(PlayPauseButtonOnClickHandler())
-    }
-
-    private fun updatePlayPauseDrawableState() {
-        if (MusicPlayerRemote.isPlaying) {
-            playPauseButton.setImageResource(R.drawable.ic_pause)
-        } else {
-            playPauseButton.setImageResource(R.drawable.ic_play_arrow_white_32dp)
-        }
     }
 }

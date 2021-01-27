@@ -43,7 +43,6 @@ import kotlinx.android.synthetic.main.media_button.*
 class CardBlurPlaybackControlsFragment :
     AbsPlayerControlsFragment(R.layout.fragment_card_blur_player_playback_controls) {
 
-    private var lastPlaybackControlsColor: Int = 0
     private var lastDisabledPlaybackControlsColor: Int = 0
     private lateinit var progressViewUpdateHelper: MusicProgressViewUpdateHelper
 
@@ -67,21 +66,6 @@ class CardBlurPlaybackControlsFragment :
         updateProgressTextColor()
 
         volumeFragment?.tintWhiteColor()
-    }
-
-    private fun setUpPlayPauseFab() {
-        playPauseButton.apply {
-            TintHelper.setTintAuto(this, Color.WHITE, true)
-            TintHelper.setTintAuto(this, Color.BLACK, false)
-            setOnClickListener(PlayPauseButtonOnClickHandler())
-        }
-    }
-
-    private fun updatePlayPauseDrawableState() {
-        when {
-            MusicPlayerRemote.isPlaying -> playPauseButton.setImageResource(R.drawable.ic_pause)
-            else -> playPauseButton.setImageResource(R.drawable.ic_play_arrow_white_32dp)
-        }
     }
 
     private fun updateProgressTextColor() {
@@ -134,26 +118,7 @@ class CardBlurPlaybackControlsFragment :
         updateShuffleState()
     }
 
-    private fun setUpMusicControllers() {
-        setUpPlayPauseFab()
-        setUpPrevNext()
-        setUpRepeatButton()
-        setUpShuffleButton()
-        setUpProgressSlider()
-    }
-
-    private fun setUpPrevNext() {
-        updatePrevNextColor()
-        nextButton.setOnClickListener { MusicPlayerRemote.playNextSong() }
-        previousButton.setOnClickListener { MusicPlayerRemote.back() }
-    }
-
-    private fun updatePrevNextColor() {
-        nextButton.setColorFilter(lastPlaybackControlsColor, PorterDuff.Mode.SRC_IN)
-        previousButton.setColorFilter(lastPlaybackControlsColor, PorterDuff.Mode.SRC_IN)
-    }
-
-    private fun setUpShuffleButton() {
+    override fun setUpShuffleButton() {
         shuffleButton.setOnClickListener { MusicPlayerRemote.toggleShuffleMode() }
     }
 
@@ -170,7 +135,7 @@ class CardBlurPlaybackControlsFragment :
         }
     }
 
-    private fun setUpRepeatButton() {
+    override fun setUpRepeatButton() {
         repeatButton.setOnClickListener { MusicPlayerRemote.cycleRepeatMode() }
     }
 

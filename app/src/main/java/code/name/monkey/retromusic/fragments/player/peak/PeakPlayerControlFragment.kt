@@ -45,7 +45,6 @@ import kotlinx.android.synthetic.main.fragment_peak_control_player.*
 class PeakPlayerControlFragment : AbsPlayerControlsFragment(R.layout.fragment_peak_control_player) {
 
     private lateinit var progressViewUpdateHelper: MusicProgressViewUpdateHelper
-    private var lastPlaybackControlsColor: Int = 0
     private var lastDisabledPlaybackControlsColor: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -105,29 +104,13 @@ class PeakPlayerControlFragment : AbsPlayerControlsFragment(R.layout.fragment_pe
         updateShuffleState()
     }
 
-    private fun updatePlayPauseDrawableState() {
-        if (MusicPlayerRemote.isPlaying) {
-            playPauseButton.setImageResource(R.drawable.ic_pause)
-        } else {
-            playPauseButton.setImageResource(R.drawable.ic_play_arrow_white_32dp)
-        }
-    }
-
-    private fun setUpMusicControllers() {
-        setUpPlayPauseFab()
-        setUpPrevNext()
-        setUpRepeatButton()
-        setUpShuffleButton()
-        setUpProgressSlider()
-    }
-
-    private fun setUpShuffleButton() {
+    override fun setUpShuffleButton() {
         shuffleButton.setOnClickListener {
             MusicPlayerRemote.toggleShuffleMode()
         }
     }
 
-    private fun setUpRepeatButton() {
+    override fun setUpRepeatButton() {
         repeatButton.setOnClickListener {
             MusicPlayerRemote.cycleRepeatMode()
         }
@@ -157,23 +140,6 @@ class PeakPlayerControlFragment : AbsPlayerControlsFragment(R.layout.fragment_pe
 
         songTotalTime.text = MusicUtil.getReadableDurationString(total.toLong())
         songCurrentProgress.text = MusicUtil.getReadableDurationString(progress.toLong())
-    }
-
-    private fun setUpPlayPauseFab() {
-        TintHelper.setTintAuto(playPauseButton, Color.WHITE, true)
-        TintHelper.setTintAuto(playPauseButton, Color.BLACK, false)
-        playPauseButton.setOnClickListener(PlayPauseButtonOnClickHandler())
-    }
-
-    private fun setUpPrevNext() {
-        updatePrevNextColor()
-        nextButton.setOnClickListener { MusicPlayerRemote.playNextSong() }
-        previousButton.setOnClickListener { MusicPlayerRemote.back() }
-    }
-
-    private fun updatePrevNextColor() {
-        nextButton.setColorFilter(lastPlaybackControlsColor, PorterDuff.Mode.SRC_IN)
-        previousButton.setColorFilter(lastPlaybackControlsColor, PorterDuff.Mode.SRC_IN)
     }
 
     override fun updateShuffleState() {

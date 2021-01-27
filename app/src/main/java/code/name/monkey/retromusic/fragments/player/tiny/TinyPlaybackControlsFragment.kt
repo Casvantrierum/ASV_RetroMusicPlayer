@@ -48,7 +48,6 @@ class TinyPlaybackControlsFragment :
     override fun onUpdateProgressViews(progress: Int, total: Int) {
     }
 
-    private var lastPlaybackControlsColor: Int = 0
     private var lastDisabledPlaybackControlsColor: Int = 0
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -56,17 +55,11 @@ class TinyPlaybackControlsFragment :
         setUpMusicControllers()
     }
 
-    private fun setUpMusicControllers() {
-        setUpRepeatButton()
-        setUpShuffleButton()
-        setUpProgressSlider()
-    }
-
-    private fun setUpShuffleButton() {
+    override fun setUpShuffleButton() {
         playerShuffleButton.setOnClickListener { MusicPlayerRemote.toggleShuffleMode() }
     }
 
-    private fun setUpRepeatButton() {
+    override fun setUpRepeatButton() {
         playerRepeatButton.setOnClickListener { MusicPlayerRemote.cycleRepeatMode() }
     }
 
