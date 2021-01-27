@@ -56,7 +56,6 @@ import kotlinx.android.synthetic.main.fragment_color_player_playback_controls.*
 class BlurPlaybackControlsFragment :
     AbsPlayerControlsFragment(R.layout.fragment_blur_player_playback_controls) {
 
-    private var lastPlaybackControlsColor: Int = 0
     private var lastDisabledPlaybackControlsColor: Int = 0
     private var progressViewUpdateHelper: MusicProgressViewUpdateHelper? = null
 
@@ -150,48 +149,14 @@ class BlurPlaybackControlsFragment :
         setFabColor(lastPlaybackControlsColor)
     }
 
-    private fun setFabColor(i: Int) {
-        TintHelper.setTintAuto(
-            playPauseButton,
-            MaterialValueHelper.getPrimaryTextColor(context, ColorUtil.isColorLight(i)),
-            false
-        )
-        TintHelper.setTintAuto(playPauseButton, i, true)
+    override fun setUpRepeatButton() {
+        //do nothing
     }
 
-    private fun setUpPlayPauseFab() {
-        playPauseButton.setOnClickListener(PlayPauseButtonOnClickHandler())
+    override fun setUpShuffleButton() {
+        //do nothing
     }
 
-    private fun updatePlayPauseDrawableState() {
-        when {
-            MusicPlayerRemote.isPlaying -> playPauseButton.setImageResource(R.drawable.ic_pause)
-            else -> playPauseButton.setImageResource(R.drawable.ic_play_arrow)
-        }
-    }
-
-    private fun setUpMusicControllers() {
-        setUpPlayPauseFab()
-        setUpPrevNext()
-        setUpRepeatButton()
-        setUpShuffleButton()
-        setUpProgressSlider()
-    }
-
-    private fun setUpPrevNext() {
-        updatePrevNextColor()
-        nextButton.setOnClickListener { MusicPlayerRemote.playNextSong() }
-        previousButton.setOnClickListener { MusicPlayerRemote.back() }
-    }
-
-    private fun updatePrevNextColor() {
-        nextButton.setColorFilter(lastPlaybackControlsColor, PorterDuff.Mode.SRC_IN)
-        previousButton.setColorFilter(lastPlaybackControlsColor, PorterDuff.Mode.SRC_IN)
-    }
-
-    private fun setUpShuffleButton() {
-        shuffleButton.setOnClickListener { MusicPlayerRemote.toggleShuffleMode() }
-    }
 
     override fun updateShuffleState() {
         when (MusicPlayerRemote.shuffleMode) {
@@ -204,10 +169,6 @@ class BlurPlaybackControlsFragment :
                 PorterDuff.Mode.SRC_IN
             )
         }
-    }
-
-    private fun setUpRepeatButton() {
-        repeatButton.setOnClickListener { MusicPlayerRemote.cycleRepeatMode() }
     }
 
     override fun updateRepeatState() {

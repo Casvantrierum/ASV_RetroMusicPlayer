@@ -41,7 +41,6 @@ import kotlinx.android.synthetic.main.fragment_material_playback_controls.*
 class MaterialControlsFragment :
     AbsPlayerControlsFragment(R.layout.fragment_material_playback_controls) {
 
-    private var lastPlaybackControlsColor: Int = 0
     private var lastDisabledPlaybackControlsColor: Int = 0
     private lateinit var progressViewUpdateHelper: MusicProgressViewUpdateHelper
 
@@ -136,42 +135,15 @@ class MaterialControlsFragment :
         updatePrevNextColor()
     }
 
+    override fun setUpRepeatButton() {
+        //do nothing
+    }
+
     private fun updatePlayPauseColor() {
         playPauseButton.setColorFilter(lastPlaybackControlsColor, PorterDuff.Mode.SRC_IN)
     }
 
-    private fun setUpPlayPauseFab() {
-        playPauseButton.setOnClickListener(PlayPauseButtonOnClickHandler())
-    }
-
-    private fun updatePlayPauseDrawableState() {
-        if (MusicPlayerRemote.isPlaying) {
-            playPauseButton.setImageResource(R.drawable.ic_pause_sharp_white_64dp)
-        } else {
-            playPauseButton.setImageResource(R.drawable.ic_play_arrow_sharp_white_64dp)
-        }
-    }
-
-    private fun setUpMusicControllers() {
-        setUpPlayPauseFab()
-        setUpPrevNext()
-        setUpRepeatButton()
-        setUpShuffleButton()
-        setUpProgressSlider()
-    }
-
-    private fun setUpPrevNext() {
-        updatePrevNextColor()
-        nextButton.setOnClickListener { MusicPlayerRemote.playNextSong() }
-        previousButton.setOnClickListener { MusicPlayerRemote.back() }
-    }
-
-    private fun updatePrevNextColor() {
-        nextButton.setColorFilter(lastPlaybackControlsColor, PorterDuff.Mode.SRC_IN)
-        previousButton.setColorFilter(lastPlaybackControlsColor, PorterDuff.Mode.SRC_IN)
-    }
-
-    private fun setUpShuffleButton() {
+    override fun setUpShuffleButton() {
         shuffleButton.setOnClickListener { MusicPlayerRemote.toggleShuffleMode() }
     }
 
@@ -186,10 +158,6 @@ class MaterialControlsFragment :
                 PorterDuff.Mode.SRC_IN
             )
         }
-    }
-
-    private fun setUpRepeatButton() {
-        repeatButton.setOnClickListener { MusicPlayerRemote.cycleRepeatMode() }
     }
 
     override fun updateRepeatState() {
