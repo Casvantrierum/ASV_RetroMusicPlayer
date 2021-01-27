@@ -32,7 +32,6 @@ data class Artist(
             return if (MusicUtil.isArtistNameUnknown(name)) {
                 UNKNOWN_ARTIST_DISPLAY_NAME
             } else safeGetFirstAlbum().safeGetFirstSong().artistName
-            return "oke"
         }
 
     val songCount: Int

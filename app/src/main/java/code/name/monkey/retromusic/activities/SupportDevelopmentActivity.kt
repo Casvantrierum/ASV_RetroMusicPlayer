@@ -105,7 +105,6 @@ class SupportDevelopmentActivity : AbsBaseActivity(), BillingProcessor.IBillingH
     }
 
     override fun onProductPurchased(productId: String, details: TransactionDetails?) {
-        // loadSkuDetails();
         Toast.makeText(this, R.string.thank_you, Toast.LENGTH_SHORT).show()
     }
 
@@ -114,7 +113,6 @@ class SupportDevelopmentActivity : AbsBaseActivity(), BillingProcessor.IBillingH
     }
 
     override fun onPurchaseHistoryRestored() {
-        // loadSkuDetails();
         Toast.makeText(this, R.string.restored_previous_purchases, Toast.LENGTH_SHORT).show()
     }
 
@@ -123,8 +121,6 @@ class SupportDevelopmentActivity : AbsBaseActivity(), BillingProcessor.IBillingH
             super.onActivityResult(requestCode, resultCode, data)
         }
         if (requestCode == TEZ_REQUEST_CODE) {
-            // Process based on the data in response.
-            // Log.d("result", data!!.getStringExtra("Status"))
         }
     }
 

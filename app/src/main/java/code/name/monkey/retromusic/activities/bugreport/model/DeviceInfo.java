@@ -14,45 +14,45 @@ public class DeviceInfo {
 
   @SuppressLint("NewApi")
   @SuppressWarnings("deprecation")
-  private final String[] abis =
+  private static final String[] abis =
       Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP
           ? Build.SUPPORTED_ABIS
           : new String[] {Build.CPU_ABI, Build.CPU_ABI2};
 
   @SuppressLint("NewApi")
-  private final String[] abis32Bits =
+  private static final String[] abis32Bits =
       Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ? Build.SUPPORTED_32_BIT_ABIS : null;
 
   @SuppressLint("NewApi")
-  private final String[] abis64Bits =
+  private static final String[] abis64Bits =
       Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ? Build.SUPPORTED_64_BIT_ABIS : null;
 
   private final String baseTheme;
 
-  private final String brand = Build.BRAND;
+  private static final String BRAND = Build.BRAND;
 
-  private final String buildID = Build.DISPLAY;
+  private static final String BUILD_ID = Build.DISPLAY;
 
-  private final String buildVersion = Build.VERSION.INCREMENTAL;
+  private static final String BUILD_VERSION = Build.VERSION.INCREMENTAL;
 
-  private final String device = Build.DEVICE;
+  private static final String DEVICE = Build.DEVICE;
 
-  private final String hardware = Build.HARDWARE;
+  private static final String HARDWARE = Build.HARDWARE;
 
   private final boolean isAdaptive;
 
-  private final String manufacturer = Build.MANUFACTURER;
+  private static final String MANUFACTURER = Build.MANUFACTURER;
 
-  private final String model = Build.MODEL;
+  private static final String MODEL = Build.MODEL;
 
   private final String nowPlayingTheme;
 
-  private final String product = Build.PRODUCT;
+  private static final String PRODUCT = Build.PRODUCT;
 
-  private final String releaseVersion = Build.VERSION.RELEASE;
+  private static final String RELEASE_VERSION = Build.VERSION.RELEASE;
 
   @IntRange(from = 0)
-  private final int sdkVersion = Build.VERSION.SDK_INT;
+  private static final int SDK_VERSION = Build.VERSION.SDK_INT;
 
   private final int versionCode;
 
@@ -91,34 +91,34 @@ public class DeviceInfo {
         + versionCode
         + "</td></tr>\n"
         + "<tr><td>Android build version</td><td>"
-        + buildVersion
+        + BUILD_VERSION
         + "</td></tr>\n"
         + "<tr><td>Android release version</td><td>"
-        + releaseVersion
+        + RELEASE_VERSION
         + "</td></tr>\n"
         + "<tr><td>Android SDK version</td><td>"
-        + sdkVersion
+        + SDK_VERSION
         + "</td></tr>\n"
         + "<tr><td>Android build ID</td><td>"
-        + buildID
+        + BUILD_ID
         + "</td></tr>\n"
         + "<tr><td>Device brand</td><td>"
-        + brand
+        + BRAND
         + "</td></tr>\n"
         + "<tr><td>Device manufacturer</td><td>"
-        + manufacturer
+        + MANUFACTURER
         + "</td></tr>\n"
         + "<tr><td>Device name</td><td>"
-        + device
+        + DEVICE
         + "</td></tr>\n"
         + "<tr><td>Device model</td><td>"
-        + model
+        + MODEL
         + "</td></tr>\n"
         + "<tr><td>Device product name</td><td>"
-        + product
+        + PRODUCT
         + "</td></tr>\n"
         + "<tr><td>Device hardware name</td><td>"
-        + hardware
+        + HARDWARE
         + "</td></tr>\n"
         + "<tr><td>ABIs</td><td>"
         + Arrays.toString(abis)
@@ -144,34 +144,34 @@ public class DeviceInfo {
         + versionCode
         + "\n"
         + "Android build version: "
-        + buildVersion
+        + BUILD_VERSION
         + "\n"
         + "Android release version: "
-        + releaseVersion
+        + RELEASE_VERSION
         + "\n"
         + "Android SDK version: "
-        + sdkVersion
+        + SDK_VERSION
         + "\n"
         + "Android build ID: "
-        + buildID
+        + BUILD_ID
         + "\n"
         + "Device brand: "
-        + brand
+        + BRAND
         + "\n"
         + "Device manufacturer: "
-        + manufacturer
+        + MANUFACTURER
         + "\n"
         + "Device name: "
-        + device
+        + DEVICE
         + "\n"
         + "Device model: "
-        + model
+        + MODEL
         + "\n"
         + "Device product name: "
-        + product
+        + PRODUCT
         + "\n"
         + "Device hardware name: "
-        + hardware
+        + HARDWARE
         + "\n"
         + "ABIs: "
         + Arrays.toString(abis)

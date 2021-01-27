@@ -146,14 +146,6 @@ class AlbumTagEditorActivity : AbsTagEditorActivity(), TextWatcher {
         deleteAlbumArt = false
     }
 
-    private fun toastLoadingFailed() {
-        Toast.makeText(
-            this@AlbumTagEditorActivity,
-            R.string.could_not_download_album_cover,
-            Toast.LENGTH_SHORT
-        ).show()
-    }
-
     override fun searchImageOnWeb() {
         searchWebFor(albumText.text.toString(), albumArtistText.text.toString())
     }
@@ -192,9 +184,11 @@ class AlbumTagEditorActivity : AbsTagEditorActivity(), TextWatcher {
     }
 
     override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+        //do nothing
     }
 
     override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+        //do nothing
     }
 
     override fun afterTextChanged(s: Editable) {
@@ -207,7 +201,6 @@ class AlbumTagEditorActivity : AbsTagEditorActivity(), TextWatcher {
     }
 
     companion object {
-
         val TAG: String = AlbumTagEditorActivity::class.java.simpleName
     }
 }

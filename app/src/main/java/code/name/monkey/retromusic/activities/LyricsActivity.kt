@@ -51,16 +51,6 @@ class LyricsActivity : AbsMusicServiceActivity(), MusicProgressViewUpdateHelper.
             return baseUrl
         }
 
-    private fun buildContainerTransform(): MaterialContainerTransform {
-        val transform = MaterialContainerTransform()
-        transform.setAllContainerColors(
-            MaterialColors.getColor(findViewById(R.id.container), R.attr.colorSurface)
-        )
-        transform.addTarget(R.id.container)
-        transform.duration = 300
-        return transform
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lyrics)

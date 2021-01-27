@@ -80,12 +80,15 @@ class SongTagEditorActivity : AbsTagEditorActivity(), TextWatcher {
     }
 
     override fun loadCurrentImage() {
+        //do nothing
     }
 
     override fun searchImageOnWeb() {
+        //do nothing
     }
 
     override fun deleteImage() {
+        //do nothing
     }
 
     override fun save() {
@@ -105,12 +108,15 @@ class SongTagEditorActivity : AbsTagEditorActivity(), TextWatcher {
     override fun getSongPaths(): List<String> = listOf(songRepository.song(id).data)
 
     override fun loadImageFromFile(selectedFile: Uri?) {
+        //do nothing
     }
 
     override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+        //do nothing
     }
 
     override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+        //do nothing
     }
 
     override fun afterTextChanged(s: Editable) {

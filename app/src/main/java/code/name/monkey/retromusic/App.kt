@@ -51,7 +51,7 @@ class App : MultiDexApplication() {
         // automatically restores purchases
         billingProcessor = BillingProcessor(this, BuildConfig.GOOGLE_PLAY_LICENSING_KEY,
             object : BillingProcessor.IBillingHandler {
-                override fun onProductPurchased(productId: String, details: TransactionDetails?) {}
+                override fun onProductPurchased(productId: String, details: TransactionDetails?) {}//empty method
 
                 override fun onPurchaseHistoryRestored() {
                     Toast.makeText(
@@ -61,9 +61,9 @@ class App : MultiDexApplication() {
                     ).show()
                 }
 
-                override fun onBillingError(errorCode: Int, error: Throwable?) {}
+                override fun onBillingError(errorCode: Int, error: Throwable?) {}//empty method
 
-                override fun onBillingInitialized() {}
+                override fun onBillingInitialized() {}//empty method
             })
     }
 

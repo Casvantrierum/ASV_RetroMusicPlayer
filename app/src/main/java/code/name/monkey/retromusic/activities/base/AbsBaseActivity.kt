@@ -57,13 +57,6 @@ abstract class AbsBaseActivity : AbsThemeActivity() {
         permissionDeniedMessage = null
     }
 
-    override fun onPostCreate(savedInstanceState: Bundle?) {
-        super.onPostCreate(savedInstanceState)
-        if (!hasPermissions()) {
-            // requestPermissions()
-        }
-    }
-
     override fun onResume() {
         super.onResume()
         val hasPermissions = hasPermissions()
@@ -89,6 +82,7 @@ abstract class AbsBaseActivity : AbsThemeActivity() {
     }
 
     private fun showOverflowMenu() {
+        //do nothing
     }
 
     protected open fun requestPermissions() {

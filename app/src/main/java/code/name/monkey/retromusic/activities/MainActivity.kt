@@ -95,7 +95,7 @@ class MainActivity : AbsSlidingMusicPanelActivity(), OnSharedPreferenceChangeLis
     }
 
     private fun showPromotionalDialog() {
-
+        //do nothing
     }
 
     private fun setupNavigationController() {

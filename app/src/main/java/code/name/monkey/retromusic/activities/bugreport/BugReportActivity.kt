@@ -235,7 +235,7 @@ open class BugReportActivity : AbsThemeActivity() {
         ReportIssueAsyncTask.report(this, report, target, login)
     }
 
-    private fun onSaveExtraInfo() {}
+    private fun onSaveExtraInfo() {}//do nothing
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {

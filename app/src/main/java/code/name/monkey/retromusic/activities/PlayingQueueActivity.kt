@@ -122,6 +122,7 @@ open class PlayingQueueActivity : AbsMusicServiceActivity() {
     }
 
     private fun checkForPadding() {
+        //do nothing
     }
 
     override fun onQueueChanged() {

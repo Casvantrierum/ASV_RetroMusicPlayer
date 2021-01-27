@@ -28,7 +28,7 @@ import org.jaudiotagger.tag.images.Artwork;
 
 public class AudioFileCoverUtils {
 
-  public static final String[] FALLBACKS = {
+  protected static final String[] FALLBACKS = {
     "cover.jpg", "album.jpg", "folder.jpg", "cover.png", "album.png", "folder.png"
   };
 

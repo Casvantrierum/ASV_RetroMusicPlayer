@@ -102,7 +102,7 @@ public class WhatsNewActivity extends AbsBaseActivity {
                   colorToCSS(
                       ColorUtil.INSTANCE.lightenColor(ThemeStore.Companion.accentColor(this))));
       webView.loadData(changeLog, "text/html", "UTF-8");
-    } catch (Throwable e) {
+    } catch (Exception e) {
       webView.loadData(
           "<h1>Unable to load</h1><p>" + e.getLocalizedMessage() + "</p>", "text/html", "UTF-8");
     }

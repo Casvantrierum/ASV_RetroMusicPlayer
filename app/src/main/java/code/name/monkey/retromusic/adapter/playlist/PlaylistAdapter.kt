@@ -124,13 +124,10 @@ class PlaylistAdapter(
     }
 
     override fun onMultipleItemAction(menuItem: MenuItem, selection: List<PlaylistWithSongs>) {
-        when (menuItem.itemId) {
-            else -> SongsMenuHelper.handleMenuClick(
+        SongsMenuHelper.handleMenuClick(
                 activity,
                 getSongList(selection),
-                menuItem.itemId
-            )
-        }
+                menuItem.itemId)
     }
 
     private fun getSongList(playlists: List<PlaylistWithSongs>): List<Song> {

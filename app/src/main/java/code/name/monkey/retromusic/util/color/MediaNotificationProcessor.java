@@ -489,7 +489,6 @@ public class MediaNotificationProcessor {
       }
     }
   }
-
   public interface OnPaletteLoadedListener {
     void onPaletteLoaded(MediaNotificationProcessor mediaNotificationProcessor);
   }

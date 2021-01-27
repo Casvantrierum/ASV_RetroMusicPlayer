@@ -51,13 +51,13 @@ class LockScreenActivity : AbsMusicServiceActivity() {
         setLightNavigationBar(true)
 
         val config = SlidrConfig.Builder().listener(object : SlidrListener {
-            override fun onSlideStateChanged(state: Int) {
+            override fun onSlideStateChanged(state: Int) { //nothing
             }
 
-            override fun onSlideChange(percent: Float) {
+            override fun onSlideChange(percent: Float) {//nothing
             }
 
-            override fun onSlideOpened() {
+            override fun onSlideOpened() {//nothing
             }
 
             override fun onSlideClosed(): Boolean {

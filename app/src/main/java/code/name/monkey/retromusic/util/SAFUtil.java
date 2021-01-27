@@ -188,12 +188,12 @@ public class SAFUtil {
     audio.commit();
   }
 
-  public static void writeSAF(Context context, AudioFile audio, Uri safUri) {
+  public static boolean writeSAF(Context context, AudioFile audio, Uri safUri) {
     Uri uri = null;
 
     if (context == null) {
       Log.e(TAG, "writeSAF: context == null");
-      return;
+      return false;
     }
 
     if (isTreeUriSaved(context)) {
@@ -210,7 +210,7 @@ public class SAFUtil {
     if (uri == null) {
       Log.e(TAG, "writeSAF: Can't get SAF URI");
       toast(context, context.getString(R.string.saf_error_uri));
-      return;
+      return false;
     }
 
     try {
@@ -225,7 +225,7 @@ public class SAFUtil {
       ParcelFileDescriptor pfd = context.getContentResolver().openFileDescriptor(uri, "rw");
       if (pfd == null) {
         Log.e(TAG, "writeSAF: SAF provided incorrect URI: " + uri);
-        return;
+        return false;
       }
 
       // now read persisted data and write it to real FD provided by SAF
@@ -235,13 +235,14 @@ public class SAFUtil {
       fos.write(audioContent);
       fos.close();
 
-      temp.delete();
+      return temp.delete();
     } catch (final Exception e) {
       Log.e(TAG, "writeSAF: Failed to write to file descriptor provided by SAF", e);
 
       toast(
           context,
           String.format(context.getString(R.string.saf_write_failed), e.getLocalizedMessage()));
+      return false;
     }
   }
 
@@ -259,8 +260,8 @@ public class SAFUtil {
     }
   }
 
-  public static void deleteFile(String path) {
-    new File(path).delete();
+  public static boolean deleteFile(String path) {
+    return new File(path).delete();
   }
 
   @TargetApi(Build.VERSION_CODES.KITKAT)

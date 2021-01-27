@@ -80,6 +80,7 @@ class SettingsActivity : AbsBaseActivity(), ColorChooserDialog.ColorCallback {
     }
 
     override fun onColorChooserDismissed(dialog: ColorChooserDialog) {
+        //do nothing
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

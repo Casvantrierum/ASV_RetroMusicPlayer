@@ -251,7 +251,7 @@ public class SeekArc extends View {
       mTouchIgnoreRadius = (float) mArcRadius / 4;
     } else {
       // Don't use the exact radius makes interaction too tricky
-      mTouchIgnoreRadius = mArcRadius - Math.min(thumbHalfWidth, thumbHalfheight);
+      mTouchIgnoreRadius = (float) mArcRadius - Math.min(thumbHalfWidth, thumbHalfheight);
     }
   }
 
@@ -299,8 +299,8 @@ public class SeekArc extends View {
 
     arcDiameter = min - getPaddingLeft();
     mArcRadius = arcDiameter / 2;
-    top = height / 2 - (arcDiameter / 2);
-    left = width / 2 - (arcDiameter / 2);
+    top = (float) height / 2 - (float)(arcDiameter / 2);
+    left = (float)width / 2 - (float)(arcDiameter / 2);
     mArcRect.set(left, top, left + arcDiameter, top + arcDiameter);
 
     int arcStart = (int) mProgressSweep + mStartAngle + mRotation + 90;

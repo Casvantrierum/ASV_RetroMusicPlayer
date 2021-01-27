@@ -188,13 +188,13 @@ public class ImageUtil {
   }
 
   static File compressImage(
-      File imageFile,
-      int reqWidth,
-      int reqHeight,
-      Bitmap.CompressFormat compressFormat,
-      int quality,
-      String destinationPath)
-      throws IOException {
+    File imageFile,
+    int reqWidth,
+    int reqHeight,
+    Bitmap.CompressFormat compressFormat,
+    int quality,
+    String destinationPath)
+    throws IOException {
     FileOutputStream fileOutputStream = null;
     File file = new File(destinationPath).getParentFile();
     if (!file.exists()) {

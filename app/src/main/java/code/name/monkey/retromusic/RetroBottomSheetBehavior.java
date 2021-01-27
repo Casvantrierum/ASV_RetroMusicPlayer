@@ -10,8 +10,6 @@ import org.jetbrains.annotations.NotNull;
 
 public class RetroBottomSheetBehavior<V extends View> extends BottomSheetBehavior<V> {
 
-  private static final String TAG = "RetroBottomSheetBehavior";
-
   private boolean allowDragging = true;
 
   public RetroBottomSheetBehavior() {}

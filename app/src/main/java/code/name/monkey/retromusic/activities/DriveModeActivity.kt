@@ -219,6 +219,7 @@ class DriveModeActivity : AbsMusicServiceActivity(), Callback {
             .transform(BlurTransformation.Builder(this).build())
             .into(object : RetroMusicColoredTarget(image) {
                 override fun onColorReady(colors: MediaNotificationProcessor) {
+                    //do nothing
                 }
             })
     }

@@ -380,6 +380,11 @@ public class BreadCrumbLayout extends HorizontalScrollView implements View.OnCli
           && ((Crumb) o).getFile().equals(getFile());
     }
 
+    @Override
+    public int hashCode() {
+      return super.hashCode();
+    }
+
     public File getFile() {
       return file;
     }

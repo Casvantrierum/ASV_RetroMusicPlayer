@@ -136,8 +136,6 @@ class HomeAdapter(
                 val viewHolder = holder as GenreViewHolder
                 viewHolder.bind(home)
             }
-            PLAYLISTS -> {
-            }
         }
     }
 

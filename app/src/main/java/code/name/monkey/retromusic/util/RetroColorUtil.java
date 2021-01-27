@@ -70,7 +70,7 @@ public class RetroColorUtil {
     if (palette == null) {
       return new Palette.Swatch(Color.WHITE, 1);
     }
-    return getBestPaletteSwatchFrom(palette.getSwatches());
+    else return getBestPaletteSwatchFrom(palette.getSwatches());
   }
 
   public static int getMatColor(Context context, String typeColor) {
