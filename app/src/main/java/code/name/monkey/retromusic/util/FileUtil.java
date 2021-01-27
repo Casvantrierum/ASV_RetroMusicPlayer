@@ -62,7 +62,7 @@ public final class FileUtil {
     try {
       return file.getCanonicalPath();
     } catch (IOException e) {
-      e.printStackTrace();
+
       return file.getAbsolutePath();
     }
   }
@@ -108,7 +108,7 @@ public final class FileUtil {
         /*try {
             paths[i] = files.get(i).getCanonicalPath(); // canonical path is important here because we want to compare the path with the media store entry later
         } catch (IOException e) {
-            e.printStackTrace();
+
             paths[i] = files.get(i).getPath();
         }*/
         paths[i] = safeGetCanonicalPath(files.get(i));
@@ -251,7 +251,7 @@ public final class FileUtil {
     try {
       return file.getCanonicalFile();
     } catch (IOException e) {
-      e.printStackTrace();
+
       return file.getAbsoluteFile();
     }
   }

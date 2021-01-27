@@ -31,7 +31,7 @@ public class LrcHelper {
     try {
       return parseInputStream(context.getResources().getAssets().open(fileName));
     } catch (IOException e) {
-      e.printStackTrace();
+
     }
     return null;
   }
@@ -40,7 +40,7 @@ public class LrcHelper {
     try {
       return parseInputStream(new FileInputStream(file));
     } catch (FileNotFoundException e) {
-      e.printStackTrace();
+
     }
     return null;
   }
@@ -62,9 +62,9 @@ public class LrcHelper {
       sortLrcs(lrcs);
       return lrcs;
     } catch (UnsupportedEncodingException e) {
-      e.printStackTrace();
+
     } catch (IOException e) {
-      e.printStackTrace();
+
     } finally {
       try {
         if (isr != null) {
@@ -74,7 +74,6 @@ public class LrcHelper {
           br.close();
         }
       } catch (IOException e1) {
-        e1.printStackTrace();
       }
     }
     return lrcs;

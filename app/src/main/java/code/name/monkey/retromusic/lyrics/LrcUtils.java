@@ -85,7 +85,7 @@ class LrcUtils {
       }
       br.close();
     } catch (IOException e) {
-      e.printStackTrace();
+
     }
 
     Collections.sort(entryList);
@@ -160,7 +160,7 @@ class LrcUtils {
         lrcText = bos.toString(charset);
       }
     } catch (Exception e) {
-      e.printStackTrace();
+
     }
     return lrcText;
   }
@@ -214,7 +214,7 @@ class LrcUtils {
       mField.setAccessible(true);
       mField.setFloat(null, 1);
     } catch (Exception e) {
-      e.printStackTrace();
+
     }
   }
 }

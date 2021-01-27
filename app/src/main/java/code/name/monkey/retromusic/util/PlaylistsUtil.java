@@ -78,7 +78,7 @@ public class PlaylistsUtil {
           cursor.close();
         }
       } catch (SecurityException e) {
-        e.printStackTrace();
+
       }
     }
     if (id == -1) {
@@ -164,7 +164,6 @@ public class PlaylistsUtil {
             .show();
       }
     } catch (SecurityException ignored) {
-      ignored.printStackTrace();
     }
   }
 

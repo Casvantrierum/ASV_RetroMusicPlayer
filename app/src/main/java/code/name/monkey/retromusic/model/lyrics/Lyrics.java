@@ -38,7 +38,7 @@ public class Lyrics {
           return true;
         }
       } catch (Exception e) {
-        e.printStackTrace();
+
       }
     }
     return false;
@@ -52,7 +52,7 @@ public class Lyrics {
           return lyrics.parse(false);
         }
       } catch (Exception e) {
-        e.printStackTrace();
+        //
       }
     }
     return new Lyrics().setData(song, data).parse(false);

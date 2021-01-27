@@ -46,13 +46,13 @@ public class LyricUtil {
       writer.write(lrcContext);
       return file;
     } catch (IOException e) {
-      e.printStackTrace();
+
       return null;
     } finally {
       try {
         if (writer != null) writer.close();
       } catch (IOException e) {
-        e.printStackTrace();
+
       }
     }
   }

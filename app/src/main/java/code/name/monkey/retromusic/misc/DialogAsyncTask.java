@@ -94,7 +94,7 @@ public abstract class DialogAsyncTask<Params, Progress, Result>
       Dialog dialog = getDialog();
       if (dialog != null) dialog.dismiss();
     } catch (Exception e) {
-      e.printStackTrace();
+
     }
   }
 

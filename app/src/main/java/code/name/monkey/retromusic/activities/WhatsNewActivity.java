@@ -41,7 +41,7 @@ public class WhatsNewActivity extends AbsBaseActivity {
       int currentVersion = pInfo.versionCode;
       PreferenceUtil.INSTANCE.setLastVersion(currentVersion);
     } catch (PackageManager.NameNotFoundException e) {
-      e.printStackTrace();
+
     }
   }
 

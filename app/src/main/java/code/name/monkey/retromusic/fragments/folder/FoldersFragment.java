@@ -149,7 +149,7 @@ public class FoldersFragment extends AbsMainActivityFragment
         try {
             return file.getCanonicalFile();
         } catch (IOException e) {
-            e.printStackTrace();
+
             return file;
         }
     }
@@ -630,7 +630,7 @@ public class FoldersFragment extends AbsMainActivityFragment
 
                 return paths;
             } catch (Exception e) {
-                e.printStackTrace();
+
                 cancel(false);
                 return null;
             }
@@ -739,7 +739,7 @@ public class FoldersFragment extends AbsMainActivityFragment
 
                 return FileUtil.matchFilesWithMediaStore(context, files);
             } catch (Exception e) {
-                e.printStackTrace();
+
                 cancel(false);
                 return null;
             }

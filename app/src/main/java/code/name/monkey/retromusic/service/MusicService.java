@@ -348,7 +348,7 @@ public class MusicService extends Service
         try {
             return bitmap.copy(config, false);
         } catch (OutOfMemoryError e) {
-            e.printStackTrace();
+
             return null;
         }
     }
