@@ -207,9 +207,11 @@ class PlayingQueueAdapter(
     }
 
     override fun onSwipeItemStarted(holder: ViewHolder, p1: Int) {
+        //do nothing
     }
 
     override fun onSetSwipeBackground(holder: ViewHolder, position: Int, result: Int) {
+        //do nothing
     }
 
     internal class SwipedResultActionRemoveItem(

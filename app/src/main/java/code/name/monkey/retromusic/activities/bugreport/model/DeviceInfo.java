@@ -81,57 +81,59 @@ public class DeviceInfo {
   }
 
   public String toMarkdown() {
+    String closeTr = "</td></tr>\n";
+
     return "Device info:\n"
         + "---\n"
         + "<table>\n"
         + "<tr><td><b>App version</b></td><td>"
         + versionName
-        + "</td></tr>\n"
+        + closeTr
         + "<tr><td>App version code</td><td>"
         + versionCode
-        + "</td></tr>\n"
+        + closeTr
         + "<tr><td>Android build version</td><td>"
         + BUILD_VERSION
-        + "</td></tr>\n"
+        + closeTr
         + "<tr><td>Android release version</td><td>"
         + RELEASE_VERSION
-        + "</td></tr>\n"
+        + closeTr
         + "<tr><td>Android SDK version</td><td>"
         + SDK_VERSION
-        + "</td></tr>\n"
+        + closeTr
         + "<tr><td>Android build ID</td><td>"
         + BUILD_ID
-        + "</td></tr>\n"
+        + closeTr
         + "<tr><td>Device brand</td><td>"
         + BRAND
-        + "</td></tr>\n"
+        + closeTr
         + "<tr><td>Device manufacturer</td><td>"
         + MANUFACTURER
-        + "</td></tr>\n"
+        + closeTr
         + "<tr><td>Device name</td><td>"
         + DEVICE
-        + "</td></tr>\n"
+        + closeTr
         + "<tr><td>Device model</td><td>"
         + MODEL
-        + "</td></tr>\n"
+        + closeTr
         + "<tr><td>Device product name</td><td>"
         + PRODUCT
-        + "</td></tr>\n"
+        + closeTr
         + "<tr><td>Device hardware name</td><td>"
         + HARDWARE
-        + "</td></tr>\n"
+        + closeTr
         + "<tr><td>ABIs</td><td>"
         + Arrays.toString(abis)
-        + "</td></tr>\n"
+        + closeTr
         + "<tr><td>ABIs (32bit)</td><td>"
         + Arrays.toString(abis32Bits)
-        + "</td></tr>\n"
+        + closeTr
         + "<tr><td>ABIs (64bit)</td><td>"
         + Arrays.toString(abis64Bits)
-        + "</td></tr>\n"
+        + closeTr
         + "<tr><td>Language</td><td>"
         + selectedLang
-        + "</td></tr>\n"
+        + closeTr
         + "</table>\n";
   }
 

@@ -8,7 +8,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -30,8 +29,8 @@ public class LrcHelper {
   public static List<Lrc> parseLrcFromAssets(Context context, String fileName) {
     try {
       return parseInputStream(context.getResources().getAssets().open(fileName));
-    } catch (IOException e) {
-
+    } catch (IOException ignored) {
+      //do nothing
     }
     return null;
   }
@@ -39,19 +38,15 @@ public class LrcHelper {
   public static List<Lrc> parseLrcFromFile(File file) {
     try {
       return parseInputStream(new FileInputStream(file));
-    } catch (FileNotFoundException e) {
-
+    } catch (FileNotFoundException ignored) {
+      //do nothing
     }
     return null;
   }
 
   private static List<Lrc> parseInputStream(InputStream inputStream) {
     List<Lrc> lrcs = new ArrayList<>();
-    InputStreamReader isr = null;
-    BufferedReader br = null;
-    try {
-      isr = new InputStreamReader(inputStream, CHARSET);
-      br = new BufferedReader(isr);
+    try (InputStreamReader isr = new InputStreamReader(inputStream, CHARSET); BufferedReader br = new BufferedReader(isr)) {
       String line;
       while ((line = br.readLine()) != null) {
         List<Lrc> lrcList = parseLrc(line);
@@ -61,20 +56,8 @@ public class LrcHelper {
       }
       sortLrcs(lrcs);
       return lrcs;
-    } catch (UnsupportedEncodingException e) {
-
-    } catch (IOException e) {
-
-    } finally {
-      try {
-        if (isr != null) {
-          isr.close();
-        }
-        if (br != null) {
-          br.close();
-        }
-      } catch (IOException e1) {
-      }
+    } catch (IOException ignored) {
+      //do nothing
     }
     return lrcs;
   }

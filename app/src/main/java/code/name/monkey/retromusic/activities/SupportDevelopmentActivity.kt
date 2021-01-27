@@ -120,8 +120,6 @@ class SupportDevelopmentActivity : AbsBaseActivity(), BillingProcessor.IBillingH
         if (!billingProcessor!!.handleActivityResult(requestCode, resultCode, data)) {
             super.onActivityResult(requestCode, resultCode, data)
         }
-        if (requestCode == TEZ_REQUEST_CODE) {
-        }
     }
 
     override fun onDestroy() {

@@ -40,6 +40,18 @@ import code.name.monkey.retromusic.util.MusicUtil
 import code.name.monkey.retromusic.util.PreferenceUtil
 import code.name.monkey.retromusic.util.color.MediaNotificationProcessor
 import kotlinx.android.synthetic.main.fragment_blur_player_playback_controls.*
+import kotlinx.android.synthetic.main.fragment_blur_player_playback_controls.nextButton
+import kotlinx.android.synthetic.main.fragment_blur_player_playback_controls.playPauseButton
+import kotlinx.android.synthetic.main.fragment_blur_player_playback_controls.previousButton
+import kotlinx.android.synthetic.main.fragment_blur_player_playback_controls.progressSlider
+import kotlinx.android.synthetic.main.fragment_blur_player_playback_controls.repeatButton
+import kotlinx.android.synthetic.main.fragment_blur_player_playback_controls.shuffleButton
+import kotlinx.android.synthetic.main.fragment_blur_player_playback_controls.songCurrentProgress
+import kotlinx.android.synthetic.main.fragment_blur_player_playback_controls.songInfo
+import kotlinx.android.synthetic.main.fragment_blur_player_playback_controls.songTotalTime
+import kotlinx.android.synthetic.main.fragment_blur_player_playback_controls.text
+import kotlinx.android.synthetic.main.fragment_blur_player_playback_controls.title
+import kotlinx.android.synthetic.main.fragment_color_player_playback_controls.*
 
 class BlurPlaybackControlsFragment :
     AbsPlayerControlsFragment(R.layout.fragment_blur_player_playback_controls) {
@@ -152,10 +164,9 @@ class BlurPlaybackControlsFragment :
     }
 
     private fun updatePlayPauseDrawableState() {
-        if (MusicPlayerRemote.isPlaying) {
-            playPauseButton.setImageResource(R.drawable.ic_pause)
-        } else {
-            playPauseButton.setImageResource(R.drawable.ic_play_arrow_white_32dp)
+        when {
+            MusicPlayerRemote.isPlaying -> playPauseButton.setImageResource(R.drawable.ic_pause)
+            else -> playPauseButton.setImageResource(R.drawable.ic_play_arrow)
         }
     }
 

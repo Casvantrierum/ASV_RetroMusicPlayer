@@ -84,8 +84,8 @@ class LrcUtils {
         }
       }
       br.close();
-    } catch (IOException e) {
-
+    } catch (IOException ignored) {
+      //do nothing
     }
 
     Collections.sort(entryList);
@@ -159,8 +159,8 @@ class LrcUtils {
         bos.close();
         lrcText = bos.toString(charset);
       }
-    } catch (Exception e) {
-
+    } catch (Exception ignored) {
+      //do nothing
     }
     return lrcText;
   }
@@ -213,8 +213,8 @@ class LrcUtils {
       Field mField = ValueAnimator.class.getDeclaredField("sDurationScale");
       mField.setAccessible(true);
       mField.setFloat(null, 1);
-    } catch (Exception e) {
-
+    } catch (Exception ignored) {
+      //do nothing
     }
   }
 }

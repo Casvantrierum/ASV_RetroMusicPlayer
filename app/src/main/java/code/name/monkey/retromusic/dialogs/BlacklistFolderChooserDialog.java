@@ -27,6 +27,8 @@ public class BlacklistFolderChooserDialog extends DialogFragment
   private boolean canGoUp = false;
   private FolderCallback callback;
 
+  private final String CURRENT_PATH = "current_path";
+
   public static BlacklistFolderChooserDialog create() {
     return new BlacklistFolderChooserDialog();
   }
@@ -79,10 +81,10 @@ public class BlacklistFolderChooserDialog extends DialogFragment
     if (savedInstanceState == null) {
       savedInstanceState = new Bundle();
     }
-    if (!savedInstanceState.containsKey("current_path")) {
-      savedInstanceState.putString("current_path", initialPath);
+    if (!savedInstanceState.containsKey(CURRENT_PATH)) {
+      savedInstanceState.putString(CURRENT_PATH, initialPath);
     }
-    parentFolder = new File(savedInstanceState.getString("current_path", File.pathSeparator));
+    parentFolder = new File(savedInstanceState.getString(CURRENT_PATH, File.pathSeparator));
     checkIfCanGoUp();
     parentContents = listFiles();
     MaterialDialog.Builder builder =
@@ -134,7 +136,7 @@ public class BlacklistFolderChooserDialog extends DialogFragment
   @Override
   public void onSaveInstanceState(Bundle outState) {
     super.onSaveInstanceState(outState);
-    outState.putString("current_path", parentFolder.getAbsolutePath());
+    outState.putString(CURRENT_PATH, parentFolder.getAbsolutePath());
   }
 
   public void setCallback(FolderCallback callback) {

@@ -53,6 +53,7 @@ class SynchronizedLyricsLRC extends AbsSynchronizedLyrics {
             this.offset = Integer.parseInt(value);
           }
         } catch (Exception ex) {
+          //do nothing
         }
       } else {
         Matcher matcher = SynchronizedLyricsLRC.LRC_LINE_PATTERN.matcher(line);
@@ -68,6 +69,7 @@ class SynchronizedLyricsLRC extends AbsSynchronizedLyrics {
               m = Integer.parseInt(timeMatcher.group(1));
               s = Float.parseFloat(timeMatcher.group(2));
             } catch (NumberFormatException ex) {
+              //do nothing
             }
             int ms = (int) (s * LRC_SECONDS_TO_MS_MULTIPLIER) + m * LRC_MINUTES_TO_MS_MULTIPLIER;
 

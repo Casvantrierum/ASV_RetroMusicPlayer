@@ -61,7 +61,6 @@ import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Random;
 
 import code.name.monkey.retromusic.R;
 import code.name.monkey.retromusic.activities.LockScreenActivity;
@@ -73,8 +72,6 @@ import code.name.monkey.retromusic.appwidgets.AppWidgetText;
 import code.name.monkey.retromusic.glide.BlurTransformation;
 import code.name.monkey.retromusic.glide.SongGlideRequest;
 import code.name.monkey.retromusic.helper.ShuffleHelper;
-import code.name.monkey.retromusic.model.AbsCustomPlaylist;
-import code.name.monkey.retromusic.model.Playlist;
 import code.name.monkey.retromusic.model.Song;
 import code.name.monkey.retromusic.model.smartplaylist.AbsSmartPlaylist;
 import code.name.monkey.retromusic.providers.HistoryStore;
@@ -588,18 +585,14 @@ public class MusicService extends Service
         int newPosition = getPosition() - 1;
         switch (repeatMode) {
             case REPEAT_MODE_ALL:
-                if (newPosition < 0) {
-                    if (getPlayingQueue() != null) {
-                        newPosition = getPlayingQueue().size() - 1;
-                    }
+                if (newPosition < 0 && getPlayingQueue() != null) {
+                    newPosition = getPlayingQueue().size() - 1;
                 }
                 break;
             case REPEAT_MODE_THIS:
                 if (force) {
-                    if (newPosition < 0) {
-                        if (getPlayingQueue() != null) {
-                            newPosition = getPlayingQueue().size() - 1;
-                        }
+                    if (newPosition < 0 && getPlayingQueue() != null) {
+                        newPosition = getPlayingQueue().size() - 1;
                     }
                 } else {
                     newPosition = getPosition();

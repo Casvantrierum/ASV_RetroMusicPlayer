@@ -52,7 +52,7 @@ public class LyricUtil {
       try {
         if (writer != null) writer.close();
       } catch (IOException e) {
-
+        //do nothing
       }
     }
   }

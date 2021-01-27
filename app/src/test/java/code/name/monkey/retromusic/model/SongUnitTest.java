@@ -15,7 +15,7 @@ public class SongUnitTest {
 
 
     @Test
-    public void hash_code(){
+    public void hashCodeTest(){
         int result = Long.hashCode( (int) testSongEmpty.getId());
         result = 31 * result + testSongEmpty.getTitle().hashCode();
         result = 31 * result + testSongEmpty.getTrackNumber();
@@ -42,7 +42,7 @@ public class SongUnitTest {
     }
 
     @Test
-    public void equals(){
+    public void equalsTest(){
         Song testSongEqual = testSongEmpty;
         assertTrue(testSongEmpty.equals(testSongEqual));
 
@@ -50,7 +50,7 @@ public class SongUnitTest {
     }
 
     @Test
-    public void companion_object(){
+    public void companionObjectValuesTest(){
         Song emptySong =  new Song(
                 -1, "", -1, -1, -1, "", -1,-1,"",-1,"", "", ""
         );

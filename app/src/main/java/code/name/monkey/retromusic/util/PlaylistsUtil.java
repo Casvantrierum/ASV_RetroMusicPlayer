@@ -78,7 +78,7 @@ public class PlaylistsUtil {
           cursor.close();
         }
       } catch (SecurityException e) {
-
+        //do nothing
       }
     }
     if (id == -1) {
@@ -164,6 +164,7 @@ public class PlaylistsUtil {
             .show();
       }
     } catch (SecurityException ignored) {
+      //do nothing
     }
   }
 

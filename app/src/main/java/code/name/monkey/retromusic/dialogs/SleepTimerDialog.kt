@@ -82,6 +82,7 @@ class SleepTimerDialog : DialogFragment() {
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar) {
+                //do nothing
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar) {

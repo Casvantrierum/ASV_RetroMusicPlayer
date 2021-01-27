@@ -54,8 +54,8 @@ public class WriteTagsAsyncTask extends DialogAsyncTask<LoadingInfo, Integer, Li
                     albumArtFile = MusicUtil.INSTANCE.createAlbumArtFile().getCanonicalFile();
                     info.getArtworkInfo().getArtwork().compress(Bitmap.CompressFormat.PNG, 0, new FileOutputStream(albumArtFile));
                     artwork = ArtworkFactory.createArtworkFromFile(albumArtFile);
-                } catch (IOException e) {
-
+                } catch (IOException ignored) {
+                    //do nothing
                 }
             }
 
@@ -72,8 +72,8 @@ public class WriteTagsAsyncTask extends DialogAsyncTask<LoadingInfo, Integer, Li
                         for (Map.Entry<FieldKey, String> entry : info.getFieldKeyValueMap().entrySet()) {
                             try {
                                 tag.setField(entry.getKey(), entry.getValue());
-                            } catch (Exception e) {
-
+                            } catch (Exception ignored) {
+                                //do nothing
                             }
                         }
                     }
@@ -90,8 +90,8 @@ public class WriteTagsAsyncTask extends DialogAsyncTask<LoadingInfo, Integer, Li
                     }
 
                     audioFile.commit();
-                } catch (@NonNull CannotReadException | IOException | CannotWriteException | TagException | ReadOnlyFileException | InvalidAudioFrameException e) {
-
+                } catch (@NonNull CannotReadException | IOException | CannotWriteException | TagException | ReadOnlyFileException | InvalidAudioFrameException ignored) {
+                    //do nothing
                 }
             }
 
@@ -106,7 +106,6 @@ public class WriteTagsAsyncTask extends DialogAsyncTask<LoadingInfo, Integer, Li
 
             return info.getFilePaths();
         } catch (Exception e) {
-
             return null;
         }
     }

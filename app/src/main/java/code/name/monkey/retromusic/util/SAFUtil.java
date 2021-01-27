@@ -179,7 +179,7 @@ public class SAFUtil {
       try {
         writeFile(audio);
       } catch (CannotWriteException e) {
-
+        //do nothing
       }
     }
   }
@@ -255,7 +255,7 @@ public class SAFUtil {
       } catch (NullPointerException e) {
         Log.e("MusicUtils", "Failed to find file " + path);
       } catch (Exception e) {
-
+        //do nothing
       }
     }
   }

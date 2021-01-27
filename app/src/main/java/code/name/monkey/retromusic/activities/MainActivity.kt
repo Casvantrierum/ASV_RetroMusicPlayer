@@ -143,8 +143,6 @@ class MainActivity : AbsSlidingMusicPanelActivity(), OnSharedPreferenceChangeLis
 
     private fun handlePlaybackIntent(intent: Intent) {
         lifecycleScope.launch(IO) {
-            val uri: Uri? = intent.data
-            val mimeType: String? = intent.type
             var handled = false
             if (intent.action != null &&
                 intent.action == MediaStore.INTENT_ACTION_MEDIA_PLAY_FROM_SEARCH
@@ -157,47 +155,58 @@ class MainActivity : AbsSlidingMusicPanelActivity(), OnSharedPreferenceChangeLis
                 }
                 handled = true
             }
-            if (uri != null && uri.toString().isNotEmpty()) {
-                MusicPlayerRemote.playFromUri(uri)
+            if (handlePlaybackIntentUriAndMimeTypeChecks(intent)) {
                 handled = true
-            } else if (MediaStore.Audio.Playlists.CONTENT_TYPE == mimeType) {
-                val id = parseLongFromIntent(intent, "playlistId", "playlist")
-                if (id >= 0L) {
-                    val position: Int = intent.getIntExtra("position", 0)
-                    val songs: List<Song> = PlaylistSongsLoader.getPlaylistSongList(get(), id)
-                    MusicPlayerRemote.openQueue(songs, position, true)
-                    handled = true
-                }
-            } else if (MediaStore.Audio.Albums.CONTENT_TYPE == mimeType) {
-                val id = parseLongFromIntent(intent, "albumId", "album")
-                if (id >= 0L) {
-                    val position: Int = intent.getIntExtra("position", 0)
-                    val songs = libraryViewModel.albumById(id).songs
-                    MusicPlayerRemote.openQueue(
-                        songs,
-                        position,
-                        true
-                    )
-                    handled = true
-                }
-            } else if (MediaStore.Audio.Artists.CONTENT_TYPE == mimeType) {
-                val id = parseLongFromIntent(intent, "artistId", "artist")
-                if (id >= 0L) {
-                    val position: Int = intent.getIntExtra("position", 0)
-                    val songs: List<Song> = libraryViewModel.artistById(id).songs
-                    MusicPlayerRemote.openQueue(
-                        songs,
-                        position,
-                        true
-                    )
-                    handled = true
-                }
             }
             if (handled) {
                 setIntent(Intent())
             }
         }
     }
+
+    private suspend fun handlePlaybackIntentUriAndMimeTypeChecks(intent: Intent) : Boolean{
+        val uri: Uri? = intent.data
+        val mimeType: String? = intent.type
+        var handled = false;
+        if (uri != null && uri.toString().isNotEmpty()) {
+            MusicPlayerRemote.playFromUri(uri)
+            handled = true
+        } else if (MediaStore.Audio.Playlists.CONTENT_TYPE == mimeType) {
+            val id = parseLongFromIntent(intent, "playlistId", "playlist")
+            if (id >= 0L) {
+                val position: Int = intent.getIntExtra("position", 0)
+                val songs: List<Song> = PlaylistSongsLoader.getPlaylistSongList(get(), id)
+                MusicPlayerRemote.openQueue(songs, position, true)
+                handled = true
+            }
+        } else if (MediaStore.Audio.Albums.CONTENT_TYPE == mimeType) {
+            val id = parseLongFromIntent(intent, "albumId", "album")
+            if (id >= 0L) {
+                val position: Int = intent.getIntExtra("position", 0)
+                val songs = libraryViewModel.albumById(id).songs
+                MusicPlayerRemote.openQueue(
+                        songs,
+                        position,
+                        true
+                )
+                handled = true
+            }
+        } else if (MediaStore.Audio.Artists.CONTENT_TYPE == mimeType) {
+            val id = parseLongFromIntent(intent, "artistId", "artist")
+            if (id >= 0L) {
+                val position: Int = intent.getIntExtra("position", 0)
+                val songs: List<Song> = libraryViewModel.artistById(id).songs
+                MusicPlayerRemote.openQueue(
+                        songs,
+                        position,
+                        true
+                )
+                handled = true
+            }
+        }
+        return handled;
+    }
+
 
     private fun parseLongFromIntent(
         intent: Intent,

@@ -100,7 +100,7 @@ public class BreadCrumbLayout extends HorizontalScrollView implements View.OnCli
       mCrumbs.clear();
       mChildFrame.removeAllViews();
     } catch (IllegalStateException e) {
-
+      //do nothing
     }
   }
 

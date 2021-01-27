@@ -1,13 +1,10 @@
 package code.name.monkey.retromusic.model;
 
-import junit.framework.TestCase;
-
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertFalse;
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotSame;
 
 public class PlaylistSongUnitTest {
@@ -31,7 +28,7 @@ public class PlaylistSongUnitTest {
     );
 
     @Test
-    public void equals() {
+    public void equalsTest() {
         //assert false because it has extra properties.
         assertFalse(testPlaylistSong.equals(testSongEmpty));
 
@@ -40,10 +37,9 @@ public class PlaylistSongUnitTest {
     }
 
     @Test
-    public void hash_code() {
+    public void hashCodeTest() {
 
         int result = testSongEmpty.hashCode();
-        System.out.println("UT0: " + result);
         result = 31 * result + Long.hashCode( (int) testPlaylistSong.getId());
         result = 31 * result + testPlaylistSong.getTitle().hashCode();
         result = 31 * result + testPlaylistSong.getTrackNumber();
