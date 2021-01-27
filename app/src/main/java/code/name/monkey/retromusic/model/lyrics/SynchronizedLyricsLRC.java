@@ -14,8 +14,8 @@
 
 package code.name.monkey.retromusic.model.lyrics;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import com.google.re2j.Matcher;
+import com.google.re2j.Pattern;
 
 class SynchronizedLyricsLRC extends AbsSynchronizedLyrics {
 

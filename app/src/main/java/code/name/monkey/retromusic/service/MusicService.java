@@ -57,6 +57,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -966,7 +967,7 @@ public class MusicService extends Service
     public void playSongs(ArrayList<Song> songs, int shuffleMode) {
         if (songs != null && !songs.isEmpty()) {
             if (shuffleMode == SHUFFLE_MODE_SHUFFLE) {
-                int startPosition = new Random().nextInt(songs.size());
+                int startPosition = new SecureRandom().nextInt(songs.size());
                 openQueue(songs, startPosition, false);
                 setShuffleMode(shuffleMode);
             } else {
@@ -1279,7 +1280,7 @@ public class MusicService extends Service
             List<Song> playlistSongs = playlist.songs();
             if (!playlistSongs.isEmpty()) {
                 if (shuffleMode == SHUFFLE_MODE_SHUFFLE) {
-                    int startPosition = new Random().nextInt(playlistSongs.size());
+                    int startPosition = new SecureRandom().nextInt(playlistSongs.size());
                     openQueue(playlistSongs, startPosition, true);
                     setShuffleMode(shuffleMode);
                 } else {

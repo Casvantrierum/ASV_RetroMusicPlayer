@@ -23,6 +23,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.palette.graphics.Palette;
 import code.name.monkey.appthemehelper.util.ColorUtil;
+
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -83,7 +85,8 @@ public class RetroColorUtil {
 
     if (arrayId != 0) {
       TypedArray colors = context.getResources().obtainTypedArray(arrayId);
-      int index = (int) (Math.random() * colors.length());
+      SecureRandom random = new SecureRandom();
+      int index = (int) (random.nextDouble() * colors.length());
       returnColor = colors.getColor(index, Color.BLACK);
       colors.recycle();
     }

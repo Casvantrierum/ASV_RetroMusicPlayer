@@ -13,8 +13,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import com.google.re2j.Matcher;
+import com.google.re2j.Pattern;
 
 /**
  * Desc : 歌词解析 Author : Lauzy Date : 2017/10/13 Blog : http://www.jianshu.com/u/e76853f863a9 Email :
